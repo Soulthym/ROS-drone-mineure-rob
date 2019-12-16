@@ -1,0 +1,14 @@
+<launch>
+
+
+<node name="replay" pkg="rosbag" type="play" output="screen" args="--delay=4 $(find flow_detection)/bags/mouvement_personne_compressed.bag" />
+
+<node name="fback_flow" pkg="opencv_apps" type="fback_flow" output="screen">
+   <remap from="image" to="/ardrone/front/image_raw/compressed" />
+</node>
+
+<node name="flowAnalyzer" pkg="flow_detection" type="analyzeFlow.py" output="screen" />
+
+<node name="rqtFlow" pkg="rqt_gui" type="rqt_gui" output="screen" args="--perspective-file $(find flow_detection)/rqt/flowDetection.perspective" />
+
+</launch>

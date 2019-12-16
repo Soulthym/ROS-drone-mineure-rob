@@ -1,0 +1,11 @@
+Utilisation du package image_transport pour convertir le format d'une image
+
+topic d'entree : /ardrone/front/image_raw/compressed    de type sensor_msgs/CompressedImage
+
+	(le suffixe /compressed est omis dans la ligne de commande pour le topic d'entree)
+
+topic de sortie : /front_cam/image_raw                  de type sensor_msgs/Image
+
+
+rosrun image_transport republish compressed in:=/ardrone/front/image_raw/ raw out:=/front_cam/image_raw
+

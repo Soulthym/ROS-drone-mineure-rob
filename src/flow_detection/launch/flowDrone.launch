@@ -1,0 +1,12 @@
+<launch>
+
+
+<node name="fback_flow" pkg="opencv_apps" type="fback_flow" output="screen">
+   <remap from="image" to="/ardrone/front/image_raw" />
+</node>
+
+<node name="flowAnalyzer" pkg="flow_detection" type="analyzeFlow.py" output="screen" />
+
+<node name="rqtFlow" pkg="rqt_gui" type="rqt_gui" output="screen" args="--perspective-file $(find flow_detection)/rqt/flowDetection.perspective" />
+
+</launch>
